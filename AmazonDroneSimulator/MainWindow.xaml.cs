@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AmazonDroneSimulator.CodeRunner;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,7 +31,7 @@ namespace AmazonDroneSimulator
         {
             var lines = CodeTextBox.Text.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None).Where(line => !String.IsNullOrEmpty(line) && !String.IsNullOrWhiteSpace(line)).ToList();
 
-            Compilator.Complie(lines);
+            var compiled = Compilator.Complie(lines);
 
             StringBuilder builder = new StringBuilder();
 
@@ -38,6 +39,10 @@ namespace AmazonDroneSimulator
 
             CodeTextBox.Text = builder.ToString();
 
+            if(compiled)
+            {
+                Runner.RunCode(lines);
+            }
 
         }
     }

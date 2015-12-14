@@ -11,7 +11,7 @@ namespace AmazonDroneSimulator
     {
         public string Key { get; set; }
 
-        public int? Value
+        public int Value
         {
             get
             {
@@ -25,7 +25,7 @@ namespace AmazonDroneSimulator
         }
 
 
-        private int? _value { get; set; }
+        private int _value { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

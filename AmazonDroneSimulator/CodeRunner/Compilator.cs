@@ -31,7 +31,7 @@ namespace AmazonDroneSimulator
                 if (Enum.GetNames(typeof(CommandsEnum)).Contains(comands[0]))
                 {
                     int ret = 0;
-                    if (CheckForParantesis(comands[1]))
+                    if (IsMemoryIdentificator(comands[1]))
                     {
                         
                         return int.TryParse(comands[1].Replace("[", String.Empty).Replace("]", string.Empty), out ret);
@@ -45,7 +45,7 @@ namespace AmazonDroneSimulator
             return false;
         }
 
-        private static bool CheckForParantesis(string line)
+        public static bool IsMemoryIdentificator(string line)
         {
             if (line.StartsWith("[") && line.EndsWith("]"))
             {
@@ -56,6 +56,12 @@ namespace AmazonDroneSimulator
                 return false;
             }
         }
+
+        public static string GetNumberFromMemoryIdentificator(string memory)
+        {
+            return memory.Replace("[", String.Empty).Replace("]", string.Empty);
+        }
+        
 
     }
 }

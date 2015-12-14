@@ -63,8 +63,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Commands.cs" />
+    <Compile Include="CodeRunner\Command.cs" />
+    <Compile Include="CodeRunner\Commander.cs" />
+    <Compile Include="CodeRunner\CommandsEnum.cs" />
+    <Compile Include="CodeRunner\CommandsFactory.cs" />
     <Compile Include="CodeRunner\Compilator.cs" />
+    <Compile Include="CodeRunner\Runner.cs" />
     <Compile Include="Data\DroneMemoryValue.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

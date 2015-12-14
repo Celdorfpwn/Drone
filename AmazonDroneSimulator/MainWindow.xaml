@@ -22,7 +22,7 @@
                 <RowDefinition Height="30"></RowDefinition>
                 <RowDefinition Height="10"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBox Name="CodeTextBox" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" AcceptsReturn="True" TextWrapping="Wrap" Padding="10"></TextBox>
+            <TextBox Name="CodeTextBox" FontSize="18" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" AcceptsReturn="True" TextWrapping="Wrap" Padding="10"></TextBox>
 
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -34,6 +34,6 @@
             </Grid>
             
         </Grid>
-        <DataGrid Name="MapGrid" Grid.Column="2"></DataGrid>
+        <Grid Name="MapGrid" Grid.Column="2"></Grid>
     </Grid>
 </Window>
