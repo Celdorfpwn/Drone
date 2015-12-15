@@ -26,7 +26,16 @@ namespace AmazonDroneSimulator.UIObjects
             InitializeComponent();
         }
 
-        internal bool Move(int direction)
+        public bool Move(int direction)
+        {
+
+            MoveDirection(direction);
+            DroneMap.Map.Refresh();
+            Thread.Sleep(300);
+            return ReachedTarget();
+        }
+
+        private void MoveDirection(int direction)
         {
             switch (direction)
             {
@@ -45,33 +54,43 @@ namespace AmazonDroneSimulator.UIObjects
                     Left();
                     break;
             }
-
-            return ReachedTarget();
         }
 
         private bool ReachedTarget()
         {
-            return Grid.GetRow(this) == DroneMap.TargetRow && Grid.GetColumn(this) == DroneMap.TargetColumn;
+            if(Grid.GetRow(this) == DroneMap.TargetRow && Grid.GetColumn(this) == DroneMap.TargetColumn)
+            {
+                DroneMap.DestroyTarget();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private void Left()
         {
             Grid.SetColumn(this, Grid.GetColumn(this) - 1);
+            ConsoleView.Write("Left");
         }
 
         private void Right()
         {
             Grid.SetColumn(this, Grid.GetColumn(this) + 1);
+            ConsoleView.Write("Right");
         }
 
         private void Down()
         {
             Grid.SetRow(this, Grid.GetRow(this) + 1);
+            ConsoleView.Write("Down");
         }
 
         private void Up()
         {
             Grid.SetRow(this, Grid.GetRow(this) - 1);
+            ConsoleView.Write("Up");
         }
 
     }

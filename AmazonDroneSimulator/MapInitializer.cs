@@ -1,5 +1,4 @@
 ﻿using System;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -63,6 +62,11 @@ namespace AmazonDroneSimulator
             Grid.SetRow(Target, rowPos);
             Grid.SetColumn(Target, colPos);
             Map.Children.Add(Target);
+        }
+
+        internal static void DestroyTarget()
+        {
+            Target.Boom();
         }
 
         private static void SetDroneLocation(dynamic x, dynamic y)

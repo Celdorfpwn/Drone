@@ -16,6 +16,7 @@ namespace AmazonDroneSimulator
             if (TextBox!=null)
             {
                 TextBox.Text += value + Environment.NewLine;
+                TextBox.Refresh();
             }
         }
 

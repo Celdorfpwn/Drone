@@ -24,5 +24,11 @@ namespace AmazonDroneSimulator.UIObjects
         {
             InitializeComponent();
         }
+        
+        internal void Boom()
+        {
+            string uriString = "pack://application:,,,/Images/boom.jpg";
+            image.Source = new BitmapImage(new Uri(uriString));
+        }
     }
 }
