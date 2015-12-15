@@ -21,9 +21,29 @@ namespace AmazonDroneSimulator.UIObjects
     /// </summary>
     public partial class MyDrone : UserControl
     {
-        public MyDrone()
+
+        public int X
+        {
+            get
+            {
+                return Grid.GetColumn(this);
+            }
+        }
+
+        public int Y
+        {
+            get
+            {
+                return Grid.GetRow(this);
+            }
+        }
+
+        public MyDrone(int x,int y)
         {
             InitializeComponent();
+            Grid.SetColumn(this, x);
+            Grid.SetRow(this, y);
+            DroneMap.Map.Children.Add(this);
         }
 
         public bool Move(int direction)
@@ -56,9 +76,10 @@ namespace AmazonDroneSimulator.UIObjects
             }
         }
 
+
         private bool ReachedTarget()
         {
-            if(Grid.GetRow(this) == DroneMap.TargetRow && Grid.GetColumn(this) == DroneMap.TargetColumn)
+            if(X == DroneMap.Target.X && Y == DroneMap.Target.Y)
             {
                 DroneMap.DestroyTarget();
                 return true;
@@ -71,25 +92,25 @@ namespace AmazonDroneSimulator.UIObjects
 
         private void Left()
         {
-            Grid.SetColumn(this, Grid.GetColumn(this) - 1);
+            Grid.SetColumn(this, X - 1);
             ConsoleView.Write("Left");
         }
 
         private void Right()
         {
-            Grid.SetColumn(this, Grid.GetColumn(this) + 1);
+            Grid.SetColumn(this, X + 1);
             ConsoleView.Write("Right");
         }
 
         private void Down()
         {
-            Grid.SetRow(this, Grid.GetRow(this) + 1);
+            Grid.SetRow(this, Y + 1);
             ConsoleView.Write("Down");
         }
 
         private void Up()
         {
-            Grid.SetRow(this, Grid.GetRow(this) - 1);
+            Grid.SetRow(this, Y - 1);
             ConsoleView.Write("Up");
         }
 

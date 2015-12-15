@@ -20,15 +20,34 @@ namespace AmazonDroneSimulator.UIObjects
     /// </summary>
     public partial class Target : UserControl
     {
-        public Target()
+        public int X
+        {
+            get
+            {
+                return Grid.GetColumn(this);
+            }
+        }
+
+        public int Y
+        {
+            get
+            {
+                return Grid.GetRow(this);
+            }
+        }
+
+        public Target(int x,int y)
         {
             InitializeComponent();
+            Grid.SetColumn(this, x);
+            Grid.SetRow(this, y);
+            DroneMap.Map.Children.Add(this);
         }
         
-        internal void Boom()
+        internal void Destroy()
         {
             string uriString = "pack://application:,,,/Images/boom.jpg";
-            image.Source = new BitmapImage(new Uri(uriString));
+            Image.Source = new BitmapImage(new Uri(uriString));
         }
     }
 }

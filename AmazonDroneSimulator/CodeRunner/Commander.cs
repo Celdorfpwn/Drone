@@ -64,6 +64,10 @@ namespace AmazonDroneSimulator.CodeRunner
             {
                 return -3;
             }
+            else if (DroneMap.IsDroneCrashed())
+            {
+                return -2;
+            }
             else
             {
                 return -1;

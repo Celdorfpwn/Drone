@@ -29,7 +29,7 @@ namespace AmazonDroneSimulator.CodeRunner
                 else if(index == -2)
                 {
                     ConsoleView.Write("-----------------");
-                    ConsoleView.Write("Out of map");
+                    ConsoleView.Write("Crashed");
                     break;
                 }
                 else if(index == -3)

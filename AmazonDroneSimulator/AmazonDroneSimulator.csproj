@@ -61,8 +61,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Extensions.cs" />
+    <Compile Include="UIObjects\MapObjects.cs" />
     <Compile Include="UIObjects\MyDrone.xaml.cs">
       <DependentUpon>MyDrone.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIObjects\Obstacle.xaml.cs">
+      <DependentUpon>Obstacle.xaml</DependentUpon>
     </Compile>
     <Compile Include="UIObjects\Target.xaml.cs">
       <DependentUpon>Target.xaml</DependentUpon>
@@ -91,13 +95,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UIObjects\Obstacle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UIObjects\Target.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MapInitializer.cs" />
+    <Compile Include="DroneMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -128,9 +136,11 @@
   <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\boom.jpg" />
+    <Resource Include="Images\crash.jpg" />
     <Content Include="Images\drone.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Images\obstacle.jpg" />
     <Content Include="Images\target.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
