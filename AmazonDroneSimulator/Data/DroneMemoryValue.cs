@@ -42,6 +42,7 @@ namespace AmazonDroneSimulator
         {
             if (_values != null)
             {
+                ConsoleView.Clear();
                 foreach(var value in _values)
                 {
                     value.Value = 0;
@@ -55,7 +56,7 @@ namespace AmazonDroneSimulator
             _values.Add(new DroneMemoryValue { Key = "A" });
             _values.Add(new DroneMemoryValue { Key = "N" });
 
-            for (var index = 0; index < 1000; index++)
+            for (var index = 0; index < 2000; index++)
             {
                 _values.Add(new DroneMemoryValue { Key = "[" + index + "]" });
             }

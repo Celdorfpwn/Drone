@@ -1,0 +1,8 @@
+{
+  "simulatedDrone": {"type": "Drone", "identifier": "@", "position": {"x": 0, "y": 0}},
+  "map": {
+    "cols": 10,
+    "rows": 10,
+    "target": {"x": 5, "y": 7},
+  },
+}

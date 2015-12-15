@@ -25,11 +25,15 @@ namespace AmazonDroneSimulator.CodeRunner
         public static void LDN(string value)
         {
             Memory[IndexN].Value = GetAssignValue(value);
+
+            ConsoleView.Write("N = " + Memory[IndexN].Value);
         }
 
         public static void LDA(string value)
         {
             Memory[IndexA].Value = GetAssignValue(value);
+
+            ConsoleView.Write("A = " + Memory[IndexA].Value);
 
         }
 
@@ -37,16 +41,34 @@ namespace AmazonDroneSimulator.CodeRunner
         {
             var index = GetIndexFromIdentificator(value);
             Memory[index].Value = Memory[IndexA].Value;
+
+            ConsoleView.Write("["+ Memory[index].Value +"] = " + Memory[IndexA].Value);
+
         }
 
         public static void ADDA(string value)
         {
             Memory[IndexA].Value += GetAssignValue(value);
+            ConsoleView.Write("A += " + GetAssignValue(value));
         }
 
         public static void SUBA(string value)
         {
             Memory[IndexA].Value -= GetAssignValue(value);
+            ConsoleView.Write("A -= " + GetAssignValue(value));
+        }
+
+        internal static int HLT()
+        {
+            if (DroneMap.Drone.Move(Memory[2].Value))
+            {
+                return -3;
+            }
+            else
+            {
+                return -1;
+            }
+            
         }
 
         public static int GetAssignValue(string value)
@@ -64,6 +86,7 @@ namespace AmazonDroneSimulator.CodeRunner
 
         public static int JGE(string value)
         {
+            ConsoleView.Write("Jump to line " + GetAssignValue(value));
             return GetAssignValue(value);
         }
 

@@ -10,6 +10,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"></ColumnDefinition>
             <ColumnDefinition Width="400"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <ScrollViewer HorizontalScrollBarVisibility="Visible" Grid.Column="0">
@@ -32,8 +33,35 @@
                 <Button Name="Compile" Content="Compile" Grid.Column="0" Click="Compile_Click"></Button>
                 <Button Name="Clear" Content="Clear" Grid.Column="1"></Button>
             </Grid>
-            
+
         </Grid>
-        <Grid Name="MapGrid" Grid.Column="2"></Grid>
+        <TextBox Name="ConsoleBox" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" AcceptsReturn="True" TextWrapping="Wrap" Padding="10"></TextBox>
+        <Grid Grid.Column="3" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="5*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="1" Grid.Row="1" Content="Select map" FontSize="13" HorizontalContentAlignment="Center"></Label>
+                <Button Name="SelectMap" Grid.Column="2" Grid.Row="1" Click="SelectMap_Click"></Button>
+            </Grid>
+            <Border BorderBrush="Black"  Margin="5" BorderThickness="1"  Grid.Row="1">
+                <Grid Name="MapGrid"></Grid>
+            </Border>
+
+        </Grid>
+
     </Grid>
 </Window>

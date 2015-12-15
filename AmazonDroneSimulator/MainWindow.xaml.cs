@@ -13,6 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using Newtonsoft.Json;
+using System.Windows.Threading;
 
 namespace AmazonDroneSimulator
 {
@@ -21,10 +24,12 @@ namespace AmazonDroneSimulator
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
             ValuesGrid.ItemsSource = DroneMemoryValue.Values;
+            ConsoleView.TextBox = ConsoleBox;
         }
 
         private void Compile_Click(object sender, RoutedEventArgs e)
@@ -46,6 +51,24 @@ namespace AmazonDroneSimulator
                 ValuesGrid.ItemsSource = DroneMemoryValue.Values;
             }
 
+        }
+
+        private void SelectMap_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.InitialDirectory = @"E:\SideProjects\AmazonDrone\Maps";
+            dlg.DefaultExt = ".jsonmap";
+
+            if (dlg.ShowDialog() == true)
+            {
+                LoadMap(dlg.FileName);
+            }
+
+        }
+
+        private void LoadMap(string fileName)
+        {
+            DroneMap.InitMap(MapGrid, File.ReadAllText(fileName));
         }
     }
 }

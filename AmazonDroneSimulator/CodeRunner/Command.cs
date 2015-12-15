@@ -48,7 +48,7 @@ namespace AmazonDroneSimulator.CodeRunner
                     }
                     break;
                 case CommandsEnum.HLT:
-                    return -1;
+                    return Commander.HLT();
                 default:
                     break;
             }
