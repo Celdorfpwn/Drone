@@ -9,17 +9,20 @@ namespace AmazonDroneSimulator.CodeRunner
     public class Command
     {
 
-        public Command(CommandsEnum type,string value)
+        public Command(CommandsEnum type,string value,int index)
         {
             Type = type;
             Value = value;
+            Index = index;
         }
+
+        public int Index { get; private set; }
 
         public CommandsEnum Type { get; private set; }
 
         public string Value { get; private set; }
 
-        public void Execute()
+        public int Execute()
         {
             switch(Type)
             {
@@ -35,9 +38,22 @@ namespace AmazonDroneSimulator.CodeRunner
                 case CommandsEnum.ADDA:
                     Commander.ADDA(Value);
                     break;
+                case CommandsEnum.SUBA:
+                    Commander.SUBA(Value);
+                    break;
+                case CommandsEnum.JGE:
+                    if(Commander.DoJGE())
+                    {
+                        return Commander.JGE(Value);
+                    }
+                    break;
+                case CommandsEnum.HLT:
+                    return -1;
                 default:
                     break;
             }
+
+            return Index + 1;
         }
     }
 }

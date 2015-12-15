@@ -24,25 +24,34 @@ namespace AmazonDroneSimulator
 
         private static bool CheckLine(string line)
         {
-            var comands = line.Split(' ');
 
-            if (comands.Count() > 1)
-            {      
-                if (Enum.GetNames(typeof(CommandsEnum)).Contains(comands[0]))
+            if (line != CommandsEnum.HLT.ToString())
+            {
+
+                var comands = line.Split(' ');
+
+                if (comands.Count() > 1)
                 {
-                    int ret = 0;
-                    if (IsMemoryIdentificator(comands[1]))
+                    if (Enum.GetNames(typeof(CommandsEnum)).Contains(comands[0]))
                     {
-                        
-                        return int.TryParse(comands[1].Replace("[", String.Empty).Replace("]", string.Empty), out ret);
-                    }
-                    else
-                    {
-                        return int.TryParse(comands[1], out ret);
+                        int ret = 0;
+                        if (IsMemoryIdentificator(comands[1]))
+                        {
+
+                            return int.TryParse(comands[1].Replace("[", String.Empty).Replace("]", string.Empty), out ret);
+                        }
+                        else
+                        {
+                            return int.TryParse(comands[1], out ret);
+                        }
                     }
                 }
+                return false;
             }
-            return false;
+            else
+            {
+                return true;
+            }
         }
 
         public static bool IsMemoryIdentificator(string line)

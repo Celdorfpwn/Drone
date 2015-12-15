@@ -10,10 +10,19 @@ namespace AmazonDroneSimulator.CodeRunner
     {
         internal static IEnumerable<Command> Create(IEnumerable<string> codeLines)
         {
+            var index = 0;
             foreach(var line in codeLines)
             {
-                var commands = line.Split(' ');
-                yield return new Command((CommandsEnum)Enum.Parse(typeof(CommandsEnum),commands[0]), commands[1]);
+                var splitLine = line.Split(' ');
+
+                if (splitLine.Count() > 1)
+                {
+                    yield return new Command((CommandsEnum)Enum.Parse(typeof(CommandsEnum), splitLine[0]), splitLine[1], index++);
+                } 
+                else
+                {
+                    yield return new Command(CommandsEnum.HLT, String.Empty, index++);
+                }
             }
         }
     }

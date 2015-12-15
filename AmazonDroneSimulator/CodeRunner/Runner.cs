@@ -11,10 +11,11 @@ namespace AmazonDroneSimulator.CodeRunner
         public static void RunCode(IEnumerable<string> codeLines)
         {
             var commands = CommandsFactory.Create(codeLines);
-
-            foreach(var command in commands)
+            int index = 0;
+            var limit = commands.Count();
+            while(index != -1 || index == limit)
             {
-                command.Execute();
+                index = commands.ElementAt(index).Execute();
             }
         }
     }

@@ -41,7 +41,9 @@ namespace AmazonDroneSimulator
 
             if(compiled)
             {
+                DroneMemoryValue.Reset();
                 Runner.RunCode(lines);
+                ValuesGrid.ItemsSource = DroneMemoryValue.Values;
             }
 
         }

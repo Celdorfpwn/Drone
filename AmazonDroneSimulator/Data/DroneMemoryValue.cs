@@ -38,6 +38,29 @@ namespace AmazonDroneSimulator
             }
         }
 
+        public static void Reset()
+        {
+            if (_values != null)
+            {
+                foreach(var value in _values)
+                {
+                    value.Value = 0;
+                }
+            }
+
+        }
+
+        private static void Build()
+        {
+            _values.Add(new DroneMemoryValue { Key = "A" });
+            _values.Add(new DroneMemoryValue { Key = "N" });
+
+            for (var index = 0; index < 1000; index++)
+            {
+                _values.Add(new DroneMemoryValue { Key = "[" + index + "]" });
+            }
+        }
+
         public static List<DroneMemoryValue> Values
         {
             get
@@ -45,14 +68,8 @@ namespace AmazonDroneSimulator
                 if (_values == null)
                 {
                     _values = new List<DroneMemoryValue>();
+                    Build();
 
-                    _values.Add(new DroneMemoryValue { Key = "A" });
-                    _values.Add(new DroneMemoryValue { Key = "N" });
-
-                    for (var index = 0; index < 1000; index++)
-                    {
-                        _values.Add(new DroneMemoryValue { Key = "[" + index + "]" });
-                    }
                 }
 
                 return _values;

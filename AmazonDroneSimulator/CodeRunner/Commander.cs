@@ -12,13 +12,15 @@ namespace AmazonDroneSimulator.CodeRunner
         private const int IndexA = 0;
         private const int IndexN = 1;
 
-        static Commander()
-        {
-            Memory = DroneMemoryValue.Values;
-        }
         
 
-        private static List<DroneMemoryValue> Memory { get; set; }
+        private static List<DroneMemoryValue> Memory
+        {
+            get
+            {
+                return DroneMemoryValue.Values;
+            }
+        }
 
         public static void LDN(string value)
         {
@@ -60,6 +62,15 @@ namespace AmazonDroneSimulator.CodeRunner
             }
         }
 
+        public static int JGE(string value)
+        {
+            return GetAssignValue(value);
+        }
+
+        public static bool DoJGE()
+        {
+            return Memory[IndexA].Value >= 0;
+        }
 
         private static int GetIndexFromIdentificator(string value)
         {
