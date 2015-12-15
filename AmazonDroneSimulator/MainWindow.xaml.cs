@@ -38,11 +38,7 @@ namespace AmazonDroneSimulator
 
             var compiled = Compilator.Complie(lines);
 
-            StringBuilder builder = new StringBuilder();
-
-            lines.ForEach(line => builder.Append(line).Append(Environment.NewLine));
-
-            CodeTextBox.Text = builder.ToString();
+            WriteCodeLines(lines);
 
             if(compiled)
             {
@@ -50,7 +46,15 @@ namespace AmazonDroneSimulator
                 Runner.RunCode(lines);
                 ValuesGrid.ItemsSource = DroneMemoryValue.Values;
             }
+        }
 
+        private void WriteCodeLines(List<string> lines)
+        {
+            StringBuilder builder = new StringBuilder();
+
+            lines.ForEach(line => builder.Append(line).Append(Environment.NewLine));
+
+            CodeTextBox.Text = builder.ToString();
         }
 
         private void SelectMap_Click(object sender, RoutedEventArgs e)
@@ -69,6 +73,16 @@ namespace AmazonDroneSimulator
         private void LoadMap(string fileName)
         {
             DroneMap.InitMap(MapGrid, File.ReadAllText(fileName));
+        }
+
+        private void Open_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.InitialDirectory = @"E:\SideProjects\AmazonDrone\Maps";
+            if (dlg.ShowDialog() == true)
+            {
+                WriteCodeLines(File.ReadAllLines(dlg.FileName).ToList());
+            }
         }
     }
 }
