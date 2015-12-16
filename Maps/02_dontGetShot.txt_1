@@ -1,19 +1,21 @@
-{
-  "simulatedDrone": {"type": "Drone", "identifier": "@", "position": {"x": 0, "y": 0}},
-  "map": {
-    "rows": 10,
-    "cols": 10,
-    "target": {"x": 6, "y": 2},
-    "objects": [
-      {"type": "Obstacle", "position": {"x": 4, "y": 0}},
-      {"type": "Obstacle", "position": {"x": 4, "y": 1}},
-      {"type": "Obstacle", "position": {"x": 4, "y": 2}},
-      {"type": "Obstacle", "position": {"x": 4, "y": 4}},
-      {"type": "Obstacle", "position": {"x": 5, "y": 4}},
-      {"type": "Obstacle", "position": {"x": 6, "y": 4}},
-      {"type": "Obstacle", "position": {"x": 7, "y": 4}},
-
-      {"type": "Cetatean", "identifier": "C01", "position": {"x": 0, "y": 4}, "direction": "RIGHT"}
-    ]
-  }
-}
+LDA [1000]
+ADDA 2
+JGE 9
+ADDA 3
+JGE 11
+ADDA 6
+JGE 13
+ADDA 1
+JGE 15
+LDA 0 
+JGE 16
+LDA 3 
+JGE 16
+LDA 2
+JGE 16
+LDA 1
+STA [0]
+LDA [1000]
+SUBA 1
+STA [1000]
+HLT
