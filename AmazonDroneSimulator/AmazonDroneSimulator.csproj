@@ -61,7 +61,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Extensions.cs" />
-    <Compile Include="UIObjects\MapObjects.cs" />
+    <Compile Include="UIObjects\Citizen.xaml.cs">
+      <DependentUpon>Citizen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIObjects\Enums.cs" />
     <Compile Include="UIObjects\MyDrone.xaml.cs">
       <DependentUpon>MyDrone.xaml</DependentUpon>
     </Compile>
@@ -91,6 +94,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UIObjects\Citizen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UIObjects\MyDrone.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -137,6 +144,7 @@
   <ItemGroup>
     <Resource Include="Images\boom.jpg" />
     <Resource Include="Images\crash.jpg" />
+    <Resource Include="Images\citizen.jpg" />
     <Content Include="Images\drone.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -24,6 +24,7 @@ namespace AmazonDroneSimulator
         static DroneMap()
         {
             Obstacles = new List<Obstacle>();
+            Citizens = new List<Citizen>();
         }
 
 
@@ -34,6 +35,8 @@ namespace AmazonDroneSimulator
         public static Target Target { get;private set; }
 
         public static List<Obstacle> Obstacles { get; private set; }
+
+        public static List<Citizen> Citizens { get; private set; }
 
 
 
@@ -51,6 +54,16 @@ namespace AmazonDroneSimulator
             {
                 SetOthers(data.map.objects);
             }
+        }
+
+        internal static void Update()
+        {
+            foreach(var citizen in Citizens)
+            {
+                citizen.Move();
+            }
+
+            Map.Refresh();
         }
 
         private static void ClearMap()
@@ -71,22 +84,21 @@ namespace AmazonDroneSimulator
                     case MapObjects.Obstacle:
                         SetObstacle(obj);
                         break;
+                    case MapObjects.Cetatean:
+                        SetCetatean(obj);
+                        break;
                 }
             }
         }
 
-        internal static bool IsDroneCrashed()
+        private static void SetCetatean(dynamic obj)
         {
-            foreach(var obstacle in Obstacles)
-            {
-                if(Drone.X == obstacle.X && Drone.Y == obstacle.Y)
-                {
-                    obstacle.CrashDrone();
-                    return true;
-                }
-            }
-            return false;
+            var x = Convert.ToInt32(Convert.ToString(obj.position.x));
+            var y = Convert.ToInt32(Convert.ToString(obj.position.y));
+            var direction = (Direction)Enum.Parse(typeof(Direction), Convert.ToString(obj.direction));
+            Citizens.Add(new Citizen(x, y,direction));
         }
+
 
         private static void SetObstacle(dynamic obj)
         {
@@ -106,6 +118,19 @@ namespace AmazonDroneSimulator
         internal static void DestroyTarget()
         {
             Target.Destroy();
+        }
+
+        internal static bool IsDroneCrashed()
+        {
+            foreach (var obstacle in Obstacles)
+            {
+                if (Drone.X == obstacle.X && Drone.Y == obstacle.Y)
+                {
+                    obstacle.CrashDrone();
+                    return true;
+                }
+            }
+            return false;
         }
 
         private static void SetDroneLocation(dynamic x, dynamic y)

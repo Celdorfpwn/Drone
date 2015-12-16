@@ -10,6 +10,15 @@ namespace AmazonDroneSimulator.UIObjects
     {
         MyDrone,
         Target,
-        Obstacle
+        Obstacle,
+        Cetatean
+    }
+
+    public enum Direction
+    {
+        RIGHT,
+        LEFT,
+        DOWN,
+        UP
     }
 }

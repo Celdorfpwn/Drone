@@ -48,9 +48,8 @@ namespace AmazonDroneSimulator.UIObjects
 
         public bool Move(int direction)
         {
-
             MoveDirection(direction);
-            DroneMap.Map.Refresh();
+            DroneMap.Update();
             Thread.Sleep(300);
             return ReachedTarget();
         }
