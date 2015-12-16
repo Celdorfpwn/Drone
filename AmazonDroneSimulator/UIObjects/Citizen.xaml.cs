@@ -66,24 +66,63 @@ namespace AmazonDroneSimulator.UIObjects
             }
         }
 
+        private void RemoveFromMap()
+        {
+            DroneMap.Citizens.Remove(this);
+            DroneMap.Map.Children.Remove(this);
+        }
+
         private void Left()
         {
-            Grid.SetColumn(this, X - 1);
+            var nextPos = X - 1;
+            if (nextPos < 0)
+            {
+                RemoveFromMap();
+            }
+            else
+            {
+                Grid.SetColumn(this, nextPos);
+            }
         }
 
         private void Right()
         {
-            Grid.SetColumn(this, X + 1);
+            var nextPos = X + 1;
+            if (nextPos > DroneMap.XLimit)
+            {
+                RemoveFromMap();
+            }
+            else
+            {
+                Grid.SetColumn(this, nextPos);
+            }
+           
         }
 
         private void Down()
         {
-            Grid.SetRow(this, Y + 1);
+            var nextPos = Y + 1;
+            if (nextPos > DroneMap.YLimit)
+            {
+                RemoveFromMap();
+            }
+            else
+            {
+                Grid.SetRow(this, nextPos);
+            }
         }
 
         private void Up()
         {
-            Grid.SetRow(this, Y - 1);
+            var nextPos = Y - 1;
+            if (nextPos < 0)
+            {
+                RemoveFromMap();
+            }
+            else
+            {
+                Grid.SetRow(this, Y - 1);
+            }
         }
     }
 }

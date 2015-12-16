@@ -32,13 +32,15 @@ namespace AmazonDroneSimulator
 
         public static MyDrone Drone { get; private set; }
 
-        public static Target Target { get;private set; }
+        public static Target Target { get; private set; }
 
         public static List<Obstacle> Obstacles { get; private set; }
 
         public static List<Citizen> Citizens { get; private set; }
 
+        public static int XLimit { get; private set; }
 
+        public static int YLimit { get; private set; }
 
         public static void InitMap(Grid map, string json)
         {
@@ -56,9 +58,11 @@ namespace AmazonDroneSimulator
             }
         }
 
+
+
         internal static void Update()
         {
-            foreach(var citizen in Citizens)
+            foreach (var citizen in Citizens.ToList())
             {
                 citizen.Move();
             }
@@ -76,10 +80,10 @@ namespace AmazonDroneSimulator
 
         private static void SetOthers(dynamic objects)
         {
-            foreach(var obj in objects)
+            foreach (var obj in objects)
             {
-                var type = (MapObjects)Enum.Parse(typeof(MapObjects),Convert.ToString(obj.type));
-                switch(type)
+                var type = (MapObjects)Enum.Parse(typeof(MapObjects), Convert.ToString(obj.type));
+                switch (type)
                 {
                     case MapObjects.Obstacle:
                         SetObstacle(obj);
@@ -96,7 +100,7 @@ namespace AmazonDroneSimulator
             var x = Convert.ToInt32(Convert.ToString(obj.position.x));
             var y = Convert.ToInt32(Convert.ToString(obj.position.y));
             var direction = (Direction)Enum.Parse(typeof(Direction), Convert.ToString(obj.direction));
-            Citizens.Add(new Citizen(x, y,direction));
+            Citizens.Add(new Citizen(x, y, direction));
         }
 
 
@@ -112,7 +116,7 @@ namespace AmazonDroneSimulator
             var rowPos = Convert.ToInt32(Convert.ToString(x));
             var colPos = Convert.ToInt32(Convert.ToString(y));
 
-            Target = new Target(rowPos,colPos);
+            Target = new Target(rowPos, colPos);
         }
 
         internal static void DestroyTarget()
@@ -138,7 +142,7 @@ namespace AmazonDroneSimulator
             var rowPos = Convert.ToInt32(Convert.ToString(x));
             var colPos = Convert.ToInt32(Convert.ToString(y));
 
-            Drone = new MyDrone(rowPos,colPos);
+            Drone = new MyDrone(rowPos, colPos);
 
         }
 
@@ -147,6 +151,8 @@ namespace AmazonDroneSimulator
             var colsCount = Convert.ToInt32(Convert.ToString(cols));
             var rowsCount = Convert.ToInt32(Convert.ToString(rows));
 
+            XLimit = colsCount;
+            YLimit = rowsCount;
 
             for (var count = 0; count < colsCount; count++)
             {
