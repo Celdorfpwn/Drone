@@ -66,6 +66,32 @@ namespace AmazonDroneSimulator.UIObjects
             }
         }
 
+        public bool CanShootDrone(int droneX,int droneY)
+        {
+            foreach(var value in ShootingRange())
+            {
+                if( value.Item1 == droneY && value.Item2 == droneX)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private List<Tuple<int,int>> ShootingRange()
+        {
+            List<Tuple<int, int>> range = new List<Tuple<int, int>>();
+
+            for(var y = Y-1;y<=Y+1;y++)
+            {
+                for(var x = X-1;x<=X+1;x++)
+                {
+                    range.Add(new Tuple<int, int>(y,x));
+                }
+            }
+            return range;
+        }
+
         private void RemoveFromMap()
         {
             DroneMap.Citizens.Remove(this);

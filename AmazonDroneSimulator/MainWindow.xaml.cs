@@ -25,6 +25,10 @@ namespace AmazonDroneSimulator
     public partial class MainWindow : Window
     {
 
+        private string MapFileName { get; set; }
+
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -65,6 +69,7 @@ namespace AmazonDroneSimulator
 
             if (dlg.ShowDialog() == true)
             {
+                MapFileName = dlg.FileName;
                 LoadMap(dlg.FileName);
             }
 
@@ -83,6 +88,13 @@ namespace AmazonDroneSimulator
             {
                 WriteCodeLines(File.ReadAllLines(dlg.FileName).ToList());
             }
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            var lines = CodeTextBox.Text.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None).Where(line => !String.IsNullOrEmpty(line) && !String.IsNullOrWhiteSpace(line)).ToArray();
+            var fileName = MapFileName.Replace(".jsonmap", ".txt");
+            File.WriteAllLines(fileName, lines);
         }
     }
 }

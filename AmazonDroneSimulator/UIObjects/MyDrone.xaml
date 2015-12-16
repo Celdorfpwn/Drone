@@ -6,6 +6,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="AliceBlue">
-        <Image Source="pack://application:,,,/Images/drone.jpg" Stretch="Fill"></Image>   
+        <Image Name="Image" Source="pack://application:,,,/Images/drone.jpg" Stretch="Fill"></Image>   
     </Grid>
 </UserControl>

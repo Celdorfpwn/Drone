@@ -29,9 +29,11 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Button Name="Compile" Content="Compile" Grid.Column="0" Click="Compile_Click"></Button>
                 <Button Name="Open" Content="Open" Grid.Column="1" Click="Open_Click"></Button>
+                <Button Name="Save" Content="Save" Grid.Column="2" Click="Save_Click"></Button>
             </Grid>
 
         </Grid>

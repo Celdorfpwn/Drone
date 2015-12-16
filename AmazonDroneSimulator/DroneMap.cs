@@ -134,6 +134,16 @@ namespace AmazonDroneSimulator
                     return true;
                 }
             }
+
+            foreach(var citizen in Citizens)
+            {
+                if(citizen.CanShootDrone(Drone.X,Drone.Y))
+                {
+                    Drone.Crash();
+                    return true;
+                }
+            }
+
             return false;
         }
 

@@ -89,6 +89,12 @@ namespace AmazonDroneSimulator.UIObjects
             }
         }
 
+        public void Crash()
+        {
+            string uriString = "pack://application:,,,/Images/crash.jpg";
+            Image.Source = new BitmapImage(new Uri(uriString));
+        }
+
         private void Left()
         {
             Grid.SetColumn(this, X - 1);
