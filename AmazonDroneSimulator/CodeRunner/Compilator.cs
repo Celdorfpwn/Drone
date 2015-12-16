@@ -24,7 +24,7 @@ namespace AmazonDroneSimulator
 
         private static bool CheckLine(string line)
         {
-
+            return true;
             if (line != CommandsEnum.HLT.ToString())
             {
 
@@ -56,6 +56,10 @@ namespace AmazonDroneSimulator
 
         public static bool IsMemoryIdentificator(string line)
         {
+            if(line == "N")
+            {
+                return true;
+            }
             if (line.StartsWith("[") && line.EndsWith("]"))
             {
                 return line.Contains("[") && line.Contains("]") && line.Count(c => c == '[') == 1 && line.Count(c => c == ']') == 1;

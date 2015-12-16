@@ -98,25 +98,25 @@ namespace AmazonDroneSimulator.UIObjects
         private void Left()
         {
             Grid.SetColumn(this, X - 1);
-            ConsoleView.Write("Left");
+            //ConsoleView.Write("Left");
         }
 
         private void Right()
         {
             Grid.SetColumn(this, X + 1);
-            ConsoleView.Write("Right");
+            //ConsoleView.Write("Right");
         }
 
         private void Down()
         {
             Grid.SetRow(this, Y + 1);
-            ConsoleView.Write("Down");
+            //ConsoleView.Write("Down");
         }
 
         private void Up()
         {
             Grid.SetRow(this, Y - 1);
-            ConsoleView.Write("Up");
+            //ConsoleView.Write("Up");
         }
 
     }

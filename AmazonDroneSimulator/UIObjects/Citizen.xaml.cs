@@ -82,9 +82,9 @@ namespace AmazonDroneSimulator.UIObjects
         {
             List<Tuple<int, int>> range = new List<Tuple<int, int>>();
 
-            for(var y = Y-1;y<=Y+1;y++)
+            for(var y = Y-3;y<=Y+3;y++)
             {
-                for(var x = X-1;x<=X+1;x++)
+                for(var x = X-3;x<=X+3;x++)
                 {
                     range.Add(new Tuple<int, int>(y,x));
                 }

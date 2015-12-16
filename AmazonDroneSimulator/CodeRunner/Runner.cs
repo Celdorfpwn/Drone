@@ -22,6 +22,8 @@ namespace AmazonDroneSimulator.CodeRunner
             {
                 index = commands.ElementAt(index).Execute();
 
+                ConsoleView.Write(index.ToString());
+
                 if (index == -1)
                 {
                     index = 0;

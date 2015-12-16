@@ -76,6 +76,7 @@ namespace AmazonDroneSimulator
             Map.RowDefinitions.Clear();
             Map.ColumnDefinitions.Clear();
             Obstacles.Clear();
+            Citizens.Clear();
         }
 
         private static void SetOthers(dynamic objects)
@@ -126,6 +127,12 @@ namespace AmazonDroneSimulator
 
         internal static bool IsDroneCrashed()
         {
+            if(Drone.X > XLimit || Drone.Y > YLimit)
+            {
+                Drone.Crash();
+                return true;
+            }
+
             foreach (var obstacle in Obstacles)
             {
                 if (Drone.X == obstacle.X && Drone.Y == obstacle.Y)
