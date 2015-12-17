@@ -42,7 +42,9 @@ namespace AmazonDroneSimulator.UIObjects
         {
             InitializeComponent();
             Grid.SetColumn(this, x);
+            DroneMemoryValue.Values[3].Value = x;
             Grid.SetRow(this, y);
+            DroneMemoryValue.Values[4].Value = y;
             DroneMap.Map.Children.Add(this);
         }
 
