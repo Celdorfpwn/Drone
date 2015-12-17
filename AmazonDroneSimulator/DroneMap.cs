@@ -92,7 +92,21 @@ namespace AmazonDroneSimulator
                     case MapObjects.Cetatean:
                         SetCetatean(obj);
                         break;
+                    case MapObjects.Drone:
+                        SetDrone(obj);
+                        break;
                 }
+            }
+        }
+
+        private static void SetDrone(dynamic obj)
+        {
+            if (obj.controller.direction != null)
+            {
+                var x = Convert.ToInt32(Convert.ToString(obj.position.x));
+                var y = Convert.ToInt32(Convert.ToString(obj.position.y));
+                var direction = (Direction)Enum.Parse(typeof(Direction), Convert.ToString(obj.controller.direction));
+                Citizens.Add(new Citizen(x, y, direction, MapObjects.Drone));
             }
         }
 
@@ -101,7 +115,7 @@ namespace AmazonDroneSimulator
             var x = Convert.ToInt32(Convert.ToString(obj.position.x));
             var y = Convert.ToInt32(Convert.ToString(obj.position.y));
             var direction = (Direction)Enum.Parse(typeof(Direction), Convert.ToString(obj.direction));
-            Citizens.Add(new Citizen(x, y, direction));
+            Citizens.Add(new Citizen(x, y, direction,MapObjects.Cetatean));
         }
 
 

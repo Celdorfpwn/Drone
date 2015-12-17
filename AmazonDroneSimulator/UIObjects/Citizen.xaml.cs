@@ -37,11 +37,18 @@ namespace AmazonDroneSimulator.UIObjects
         }
 
         public Direction Direction { get; private set; }
+        public MapObjects Type { get; private set; }
 
-        public Citizen(int x, int y,Direction direction)
+        public Citizen(int x, int y,Direction direction,MapObjects type)
         {
             InitializeComponent();
             Direction = direction;
+            Type = type;
+            if(type == MapObjects.Drone)
+            {
+                string uriString = "pack://application:,,,/Images/enemydrone.jpg";
+                Image.Source = new BitmapImage(new Uri(uriString));
+            }
             Grid.SetColumn(this, x);
             Grid.SetRow(this, y);
             DroneMap.Map.Children.Add(this);
@@ -68,6 +75,10 @@ namespace AmazonDroneSimulator.UIObjects
 
         public bool CanShootDrone(int droneX,int droneY)
         {
+            if(Type == MapObjects.Drone)
+            {
+                return droneX == X && droneY == Y;
+            }
             foreach(var value in ShootingRange())
             {
                 if( value.Item1 == droneY && value.Item2 == droneX)

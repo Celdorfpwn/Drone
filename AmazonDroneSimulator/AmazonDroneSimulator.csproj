@@ -149,6 +149,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Images\obstacle.jpg" />
+    <Resource Include="Images\enemydrone.jpg" />
     <Content Include="Images\target.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
