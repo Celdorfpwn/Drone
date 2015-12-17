@@ -101,12 +101,20 @@ namespace AmazonDroneSimulator
 
         private static void SetDrone(dynamic obj)
         {
+            var x = Convert.ToInt32(Convert.ToString(obj.position.x));
+            var y = Convert.ToInt32(Convert.ToString(obj.position.y));
             if (obj.controller.direction != null)
             {
-                var x = Convert.ToInt32(Convert.ToString(obj.position.x));
-                var y = Convert.ToInt32(Convert.ToString(obj.position.y));
                 var direction = (Direction)Enum.Parse(typeof(Direction), Convert.ToString(obj.controller.direction));
                 Citizens.Add(new Citizen(x, y, direction, MapObjects.Drone));
+            }
+            else
+            {
+                var identifier = Convert.ToString(obj.identifier);
+                new SmartDrone(x, y, identifier);
+                var targetX = Convert.ToInt32(Convert.ToString(obj.controller.target.x));
+                var targetY = Convert.ToInt32(Convert.ToString(obj.controller.target.y));
+                new SmartDroneTarget(targetX, targetY, identifier);
             }
         }
 

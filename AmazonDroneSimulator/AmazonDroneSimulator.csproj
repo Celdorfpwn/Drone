@@ -42,6 +42,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -70,6 +72,12 @@
     </Compile>
     <Compile Include="UIObjects\Obstacle.xaml.cs">
       <DependentUpon>Obstacle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIObjects\SmartDrone.xaml.cs">
+      <DependentUpon>SmartDrone.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIObjects\SmartDroneTarget.xaml.cs">
+      <DependentUpon>SmartDroneTarget.xaml</DependentUpon>
     </Compile>
     <Compile Include="UIObjects\Target.xaml.cs">
       <DependentUpon>Target.xaml</DependentUpon>
@@ -103,6 +111,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UIObjects\Obstacle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIObjects\SmartDrone.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIObjects\SmartDroneTarget.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
